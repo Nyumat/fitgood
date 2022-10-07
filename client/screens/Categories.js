@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Text, View } from "react-native";
 
-export default function FitFactory() {
+export default function Categories({ navigation }) {
   return (
     <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
       <Text
@@ -12,10 +12,10 @@ export default function FitFactory() {
           textAlign: "center",
           top: 50,
           position: "absolute",
-          fontFamily: "Apple SD Gothic Neo"
+          fontFamily: "Apple SD Gothic Neo",
         }}
       >
-        FitFactory
+        Categories
       </Text>
     </View>
   );
