@@ -13,7 +13,7 @@ const Tab = createMaterialBottomTabNavigator();
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator shifting={false}>
         <Tab.Screen name="DailyFit" component={DailyFit} />
         <Tab.Screen name="FitFactory" component={FitFactory} />
         <Tab.Screen name="MyFits" component={MyFits} />
