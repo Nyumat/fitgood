@@ -97,9 +97,13 @@ app.post('/api/login/', passport.authenticate('local'), (req, res) =>{
       category: {int within range of category numbers [default: 0-3]}
     }*/
 app.post('/api/upload_item/', check_authenticated, upload.single("image"), (req, res) => {
-  if(typeof req.body.category === 'string'){
+  if (!req.body.image) {
+    res.send().status(400)
+  }
+  if (typeof req.body.category === 'string') {
     req.body.category = parseInt(req.body.category)
   }
+  console.log("imagne:", req.body.image)
 
   let item_name = req.user + Date.now()  // this line removes necessity for filename
 
@@ -139,6 +143,9 @@ function content_authentication(req, res, next){
     }
   }
 }
+
+// generates random outfit 
+// function 
 
 app.use( check_authenticated, content_authentication, express.static(__dirname + "/content"))
 
