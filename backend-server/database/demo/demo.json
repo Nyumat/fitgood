@@ -1,0 +1,79 @@
+{
+  "username": "demo",
+  "password": "$2b$10$6zKeunrCwKtu2OaGlBkpeeNcZa7ncf8YCSP5tL/5jiyA8Kj2ssWKa",
+  "outfits": [],
+  "categories": [
+    {
+      "name": "Tops",
+      "items": [
+        {
+          "name": "demo1665347861915",
+          "img_file_path": "/demo/1665347861912-dfafds.png"
+        },
+        {
+          "name": "demo1665347914274",
+          "img_file_path": "/demo/1665347914273-fadsf.png"
+        },
+        {
+          "name": "demo1665347923831",
+          "img_file_path": "/demo/1665347923829-saf'.png"
+        }
+      ]
+    },
+    {
+      "name": "Covers",
+      "items": [
+        {
+          "name": "demo1665347942896",
+          "img_file_path": "/demo/1665347942894-dfasf.png"
+        },
+        {
+          "name": "demo1665347952634",
+          "img_file_path": "/demo/1665347952632-edwsfs.png"
+        },
+        {
+          "name": "demo1665347961994",
+          "img_file_path": "/demo/1665347961992-esdfa.png"
+        },
+        {
+          "name": "demo1665347979609",
+          "img_file_path": "/demo/1665347979607-sfsdaf.png"
+        }
+      ]
+    },
+    {
+      "name": "Bottoms",
+      "items": [
+        {
+          "name": "demo1665347994576",
+          "img_file_path": "/demo/1665347994575-index.jpg"
+        },
+        {
+          "name": "demo1665348002189",
+          "img_file_path": "/demo/1665348002188-pants.jpg"
+        }
+      ]
+    },
+    {
+      "name": "Shoes",
+      "items": [
+        {
+          "name": "demo1665348017972",
+          "img_file_path": "/demo/1665348017967-dfasd.png"
+        },
+        {
+          "name": "demo1665348023327",
+          "img_file_path": "/demo/1665348023326-dfasdf.png"
+        },
+        {
+          "name": "demo1665348028738",
+          "img_file_path": "/demo/1665348028732-dsf.png"
+        },
+        {
+          "name": "demo1665348033611",
+          "img_file_path": "/demo/1665348033610-gradsfg.png"
+        }
+      ]
+    }
+  ]
+}

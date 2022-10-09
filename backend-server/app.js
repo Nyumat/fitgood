@@ -97,11 +97,11 @@ app.post('/api/login/', passport.authenticate('local'), (req, res) =>{
       category: {int within range of category numbers [default: 0-3]}
     }*/
 app.post('/api/upload_item/', check_authenticated, upload.single("image"), (req, res) => {
-  if (!req.body.image) {
-    res.send().status(400)
-    console.log("req.body.image is undefined")
-    return
-  }
+  // if (!req.body.image) {
+  //   res.send().status(400)
+  //   console.log("req.body.image is undefined")
+  //   return
+  // }
   if (typeof req.body.category === 'string') {
     req.body.category = parseInt(req.body.category)
   }
