@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button, Image, View, Platform, ImageBackground } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import * as FileSystem from 'expo-file-system'
 
 export default function ImagePickerFeature({ source, style }) {
   const [image, setImage] = useState(null);
@@ -13,17 +14,14 @@ export default function ImagePickerFeature({ source, style }) {
       quality: 1,
     });
 
-    console.log(result);
-
     if (!result.cancelled) {
       setImage(result.uri);
+      return result.uri
     }
   };
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <ImageBackground source={source} style={style}>
-      </ImageBackground>
       {image && (
         <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
       )}

@@ -10,18 +10,20 @@ import {
   Text,
 } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import * as FileSystem from 'expo-file-system'
+
 
 export default function MyClothes({ navigation }) {
   const [image, setImage] = useState(null);
 
   const pickImage = async () => {
-    // No permissions request is necessary for launching the image library
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       aspect: [4, 3],
       quality: 1,
     });
+
 
     if (!result.cancelled) {
       setImage(result.uri);
@@ -36,12 +38,12 @@ export default function MyClothes({ navigation }) {
           fontWeight: "bold",
           color: "black",
           textAlign: "center",
-          top: 50,
+          top: 90,
           position: "absolute",
           fontFamily: "Apple SD Gothic Neo",
         }}
       >
-        MyClothes
+        Your Clothes
       </Text>
       <TouchableOpacity style={{ position: "absolute" }} onPress={pickImage}>
         <Image

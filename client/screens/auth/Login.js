@@ -53,6 +53,28 @@ export default function Login() {
         return true
     }
 
+    const backEndLogin = () => {
+        fetch('http://192.168.10.27:3005/api/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                username: formData.username,
+                password: formData.password,
+            }),
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Success:', data)
+                navigation.navigate('Home')
+            })
+            .catch((error) => {
+                console.error('Error:', error)
+            })
+    }
+
+
     const onSubmit = (e) => {
         e.preventDefault()
         let valid = false
@@ -64,6 +86,10 @@ export default function Login() {
         if (validateUserName() && validatePassword()) {
             valid = true
             console.log('form submitted')
+            
+            let y = backEndLogin()
+            console.log('y:', y)
+
             setErrors({ ...errors, username: '', password: '' })
         }
 
