@@ -106,6 +106,7 @@ app.post('/api/upload_item/', check_authenticated, upload.single("image"), (req,
     req.body.category = parseInt(req.body.category)
   }
   console.log("imagne:", req.body.image)
+  console.log("image type:", typeof(req.body.image))
 
   let item_name = req.user.username + Date.now()  // this line removes necessity for filename
 
@@ -164,6 +165,8 @@ app.get('/api/outfits/random', check_authenticated, (req, res) => {
     outfit: out
   }).status(200)
 })
+
+// app.post('/api/outfits/', check_authenticated)
 
 app.use( check_authenticated, content_authentication, express.static(__dirname + "/content"))
 
