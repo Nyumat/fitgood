@@ -12,6 +12,7 @@ import {
 } from 'native-base'
 import { useNavigation } from '@react-navigation/native'
 import { useState } from 'react'
+import axios from 'axios'
 
 export default function Login() {
     const navigation = useNavigation()
@@ -53,7 +54,25 @@ export default function Login() {
         return true
     }
 
-    const onSubmit = (e) => {
+    const backEndLogin = async () => {
+        try {
+            const response = await fetch('http://192.168.10.27:3005/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    username: formData.username,
+                    password: formData.password,
+                }),
+            })
+            return response.status
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    const onSubmit = async (e) => {
         e.preventDefault()
         let valid = false
 
@@ -62,13 +81,22 @@ export default function Login() {
         }
 
         if (validateUserName() && validatePassword()) {
-            valid = true
-            console.log('form submitted')
+
+            let res = await backEndLogin()
+
+            if (res === 200) {
+                valid = true
+            }
+
             setErrors({ ...errors, username: '', password: '' })
         }
 
         if (valid) {
             navigation.navigate('TabNavigator')
+        }
+
+        if (!valid) {
+            setErrors({ ...errors, username: 'Username or password is incorrect' })
         }
     }
 
