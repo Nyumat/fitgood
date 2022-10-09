@@ -101,7 +101,6 @@ app.post('/api/upload_item/', checkAuthenticated, upload.single("image"), (req, 
     req.body.category = parseInt(req.body.category)
   }
 
-
   account_manager.create_item(req.user, req.body.item_name, req.upload_filename, req.body.category)
   res.send().status(200)
 })

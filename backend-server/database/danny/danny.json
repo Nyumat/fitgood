@@ -13,7 +13,12 @@
     },
     {
       "name": "Bottoms",
-      "items": []
+      "items": [
+        {
+          "name": "bobtown",
+          "img_file_path": "1665284000981-retaeak.PNG"
+        }
+      ]
     },
     {
       "name": "Shoes",

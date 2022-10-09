@@ -68,13 +68,14 @@ function access(username){
 }
 
 function create_item(user, name, img_file_path, item_category){
-    
     let new_item = {name, img_file_path};
     user.categories[item_category].items.push(new_item);
 
+    console.log(user.items)
 
     // saves changes to database
-    fs.writeFileSync(ACCOUNT_PATH + "/" + username + "/" + username + ".json", user);
+    file_data = JSON.stringify(user)
+    fs.writeFileSync(ACCOUNT_PATH + "/" + user.username + "/" + user.username + ".json", file_data);
 }
 
 exports.create = create;
