@@ -17,7 +17,7 @@ export default function MyFits() {
           fontFamily: "Apple SD Gothic Neo",
         }}
       >
-        MyFits
+        Favorite Fits
       </Text>
 
       <Box maxW="300" style={{ position: "absolute", top: 130 }}>
