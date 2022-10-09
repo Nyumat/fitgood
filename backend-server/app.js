@@ -5,7 +5,7 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
 const passport = require('passport');
 const flash = require("express-flash");
 const session = require('express-session');
@@ -27,14 +27,14 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(flash())
+app.use(flash());
 app.use(session({
   secret: "test secret", // in production, this would be replaced with process.env.SESSION_SECRET TO DO
   resave: false,
   saveUninitialized: false
-}))
-app.use(passport.initialize())
-app.use(passport.session())
+}));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // initalizing multer for picture uploads
 const fileStorageEngine = multer.diskStorage({
@@ -46,8 +46,8 @@ const fileStorageEngine = multer.diskStorage({
     req.upload_filename = file_name;
     cb(null, file_name);
   }
-})
-const upload = multer({storage: fileStorageEngine})
+});
+const upload = multer({storage: fileStorageEngine});
 
 
 //create account
@@ -60,7 +60,7 @@ app.post("/api/register/", async (req, res) => {
 
     // attempts to create the account, responds with a 401 if it already exists
     try{
-      account_manager.create(req.body.username, hashed_password)
+      account_manager.create(req.body.username, hashed_password);
 
     } catch(e){
       // account already exists
@@ -79,10 +79,10 @@ app.post("/api/register/", async (req, res) => {
     console.trace(e)
     res.send().status(500)
   } 
-})
+});
 
 // login
-app.post('/api/login', passport.authenticate('local'), (req, res) =>{
+app.post('/api/login/', passport.authenticate('local'), (req, res) =>{
   if(req.user){
     res.send().status(200)
   } else {
@@ -96,19 +96,56 @@ app.post('/api/login', passport.authenticate('local'), (req, res) =>{
       item_name: {string}
       category: {int within range of category numbers [default: 0-3]}
     }*/
-app.post('/api/upload_item/', checkAuthenticated, upload.single("image"), (req, res) => {
+app.post('/api/upload_item/', check_authenticated, upload.single("image"), (req, res) => {
   if(typeof req.body.category === 'string'){
     req.body.category = parseInt(req.body.category)
   }
 
   account_manager.create_item(req.user, req.body.item_name, req.upload_filename, req.body.category)
   res.send().status(200)
-})
+});
 
-// for testing only TO DO - remove
-app.get('/api/user/', checkAuthenticated, (req, res) => {
+app.get('/api/categories/', check_authenticated, (req, res) => {
+  out = [];
+  for(let i = 0; i < req.user.categories.length; i++){
+    out.push(req.user.categories[i].name);
+  }
+  console.log("out", out)
+  res.send({
+    categories: out
+  }).status(200);
+});
+
+app.get('/api/items/:category/', check_authenticated, (req, res) => {
+  let cat = parseInt(req.params.category)
+  items = req.user.categories[cat]
+  res.send({
+    clothes: items
+  })
+});
+
+// image content retrival
+function content_authentication(req, res, next){
+  req_path = req.path.split('/');
+  if(req_path.length < 3){
+    res.send().status(404)
+  } else {
+    if(req.user.username !== req_path[1]){
+      res.send().status(401);
+    } else {
+      return next()
+    }
+  }
+}
+
+app.use( check_authenticated, content_authentication, express.static(__dirname + "/content"))
+
+
+
+// for testing only TODO - remove
+app.get('/api/user/', check_authenticated, (req, res) => {
   res.send().status(200)
-})
+});
 
 
 
@@ -118,11 +155,12 @@ app.get('/', function(req, res, next){
 });
 
 // checks if request is authenticated by passport
-function checkAuthenticated(req, res, next){
+function check_authenticated(req, res, next){
   if(req.isAuthenticated()){
     return next()
   } 
 
+  console.log("unauthenticated request")
   res.send().status(401)
 }
 
@@ -150,6 +188,6 @@ app.use(function(err, req, res, next) {
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
-})
+});
 
 module.exports = app;
