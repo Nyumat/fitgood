@@ -99,13 +99,15 @@ app.post('/api/login/', passport.authenticate('local'), (req, res) =>{
 app.post('/api/upload_item/', check_authenticated, upload.single("image"), (req, res) => {
   if (!req.body.image) {
     res.send().status(400)
+    console.log("req.body.image is undefined")
+    return
   }
   if (typeof req.body.category === 'string') {
     req.body.category = parseInt(req.body.category)
   }
   console.log("imagne:", req.body.image)
 
-  let item_name = req.user + Date.now()  // this line removes necessity for filename
+  let item_name = req.user.username + Date.now()  // this line removes necessity for filename
 
   account_manager.create_item(req.user, item_name, req.upload_filename, req.body.category)
   res.send().status(200)
@@ -116,7 +118,6 @@ app.get('/api/categories/', check_authenticated, (req, res) => {
   for(let i = 0; i < req.user.categories.length; i++){
     out.push(req.user.categories[i].name);
   }
-  console.log("out", out)
   res.send({
     categories: out
   }).status(200);
@@ -145,7 +146,24 @@ function content_authentication(req, res, next){
 }
 
 // generates random outfit 
-// function 
+app.get('/api/outfits/random', check_authenticated, (req, res) => {
+  out = [];
+ 
+  for (let i = 0; i < req.user.categories.length; i++){
+    cat_len = req.user.categories[i].items.length
+    if (cat_len < 0) {
+      out.push(null)
+    } else {
+      let index = Math.floor(Math.random() * (cat_len - 1))
+      out.push(req.user.categories[i].items[index]);
+    }
+    
+  }
+
+  res.send({
+    outfit: out
+  }).status(200)
+})
 
 app.use( check_authenticated, content_authentication, express.static(__dirname + "/content"))
 
