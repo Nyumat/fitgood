@@ -14,7 +14,7 @@ export default function DailyFit() {
           textAlign: "center",
           top: 90,
           position: "absolute",
-          fontFamily: "GillSans",
+          fontFamily: "Apple SD Gothic Neo",
         }}
       >
         Your DailyFit
@@ -22,12 +22,12 @@ export default function DailyFit() {
 
       <Text style={{
           position: "absolute",
-          width: 201,
+          width: 250,
           height: 26,
           left: 35,
           top: 144,
 
-          fontFamily: "GillSans",
+          fontFamily: "Apple SD Gothic Neo",
           fontStyle: "normal",
           
           fontSize: 20,
@@ -53,7 +53,7 @@ export default function DailyFit() {
           textAlign: "center",
           color: "#000000",
                }}>
-          <Text style={{fontFamily: "GillSans-SemiBold",}}>Click me to be notified of daily fits!</Text>
+          <Text style={{fontFamily: "Apple SD Gothic Neo",}}>Click me to be notified of daily fits!</Text>
         </Button>
         <Button style={{ 
           position: "absolute",
@@ -68,7 +68,7 @@ export default function DailyFit() {
           textAlign: "center",
           color: "#000000",
                }}>
-          <Text style={{fontFamily: "GillSans-SemiBold",}}>Add to Favorites</Text>
+          <Text style={{fontFamily: "Apple SD Gothic Neo",}}>Add to Favorites</Text>
         </Button>
       </Center>
 

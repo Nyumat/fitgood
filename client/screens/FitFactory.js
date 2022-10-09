@@ -33,7 +33,7 @@ export default function FitFactory() {
           textAlign: "center",
           color: "#000000",
                }}>
-          <Text style={{fontFamily: "GillSans-SemiBold",}}>Generate Fit</Text>
+          <Text style={{fontFamily: "Apple SD Gothic Neo",}}>Generate Fit</Text>
         </Button>
         <Button style={{ 
           position: "absolute",
@@ -48,7 +48,7 @@ export default function FitFactory() {
           textAlign: "center",
           color: "#000000",
                }}>
-          <Text style={{fontFamily: "GillSans-SemiBold",}}>Add to Favorites</Text>
+          <Text style={{fontFamily: "Apple SD Gothic Neo",}}>Add to Favorites</Text>
         </Button>
       </Center>
 
