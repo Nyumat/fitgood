@@ -1,2 +1,4 @@
 {
+      "editor.formatOnSaveMode": "file",
+      "editor.formatOnType": true,
 }
