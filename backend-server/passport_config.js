@@ -1,34 +1,36 @@
-var bcrypt = require("bcrypt")
+var bcrypt = require("bcrypt");
+// const { initialize } = require("passport");
 
-import LocalStrategy from "passport-local"
+const LocalStrategy = require('passport-local').Strategy
+// import LocalStrategy from "passport-local" TODO: remove this line
 
 
-function intialize(passport, get_user_by_username){
- const authenticateuser = async (username, password, done) =>{
-    const user = get_user_by_username(username);
-    if (!user){
-        return done(null, false, {message: "incorrect username or password"});
-    }
-
-    try{
-        if(await bcrypt.compare(password, user.password)){
-            return done(null, user)
-        } else {
-            return done(null, false, {message: "incorrect username or password"})
+function initialize(passport, get_user_by_username){
+    const authenticate_user = async (username, password, done) =>{
+        const user = get_user_by_username(username);
+        if (!user){
+            return done(null, false, {message: "incorrect username or password"}); //incorrect username
         }
-    } catch (e){
-        return done(e)
-    }
- }   
+
+        try{
+            if(await bcrypt.compare(password, user.password)){
+                return done(null, user)
+            } else {
+                return done(null, false, {message: "incorrect username or password"}) // incorrect password
+            }
+        } catch (e){
+            return done(e)
+        }
+    }  
+    passport.use(new LocalStrategy(authenticate_user))
+    passport.serializeUser((user, done) => {
+        done(null, user.username)
+    })
+    passport.deserializeUser((id, done) => {
+        done(null, get_user_by_username(id))
+    })
 }
 
-// TO DO
-passport.use(new LocalStrategy(authenticateUser))
-passport.serializeUser((user, done) => {
-    done(null, user.username)
-})
-passport.deserializeUser((id, done) => {
-    done(null, get_user_by_username(id))
-})
 
-export { initialize }
+
+exports.initialize = initialize

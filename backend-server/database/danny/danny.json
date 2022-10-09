@@ -1,0 +1,23 @@
+{
+  "username": "danny",
+  "password": "$2b$10$twutWD6Uew4iP2t1Ba588udJdXuwueBZZtloZm8WffnAKkHTIQQt.",
+  "outfits": [],
+  "categories": [
+    {
+      "name": "Tops",
+      "items": []
+    },
+    {
+      "name": "Covers",
+      "items": []
+    },
+    {
+      "name": "Bottoms",
+      "items": []
+    },
+    {
+      "name": "Shoes",
+      "items": []
+    }
+  ]
+}
