@@ -12,7 +12,7 @@ export default function DailyFit() {
           fontWeight: "bold",
           color: "black",
           textAlign: "center",
-          top: 100,
+          top: 90,
           position: "absolute",
           fontFamily: "GillSans",
         }}
@@ -20,6 +20,25 @@ export default function DailyFit() {
         Your DailyFit
       </Text>
 
+      <Text style={{
+          position: "absolute",
+          width: 201,
+          height: 26,
+          left: 35,
+          top: 144,
+
+          fontFamily: "GillSans",
+          fontStyle: "normal",
+          
+          fontSize: 20,
+          lineHeight: 26,
+          /* identical to box height, or 130% */
+
+          letterSpacing: 0.02,
+
+          color: "#000000",
+          }}
+      > Todays Date: Oct 8, 2022</Text>
       <Center>
         <Button style={{ 
           position: "absolute",
