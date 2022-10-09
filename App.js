@@ -16,7 +16,7 @@ import Login from './client/screens/auth/Login'
 import CustomCamera from './client/components/Camera'
 import MyClothes from './client/screens/MyClothes'
 import Gallery from './client/components/Gallery'
-import Loader from "./client/components/Loader";
+import Loader from './client/components/Loader'
 
 const newColorTheme = {
 	brand: {
@@ -41,8 +41,8 @@ export default function App() {
 			<AnimatedSplash
 				translucent={true}
 				isLoaded={loading}
-				logoImage={require('./assets/tree.png')}
-				backgroundColor={'#65DC90'}
+				logoImage={require('./assets/fitGood.png')}
+				backgroundColor={'#41A798'}
 				logoHeight={250}
 				logoWidth={250}
 				component={<Loader></Loader>}>
@@ -59,8 +59,8 @@ export default function App() {
 			<AnimatedSplash
 				translucent={true}
 				isLoaded={loading}
-				logoImage={require('./assets/dress.png')}
-				backgroundColor={'#BAFBD2'}
+				logoImage={require('./assets/fitGood.png')}
+				backgroundColor={'#41A798'}
 				logoHeight={250}
 				logoWidth={250}
 				component={<Loader></Loader>}>

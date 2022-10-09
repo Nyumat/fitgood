@@ -24,7 +24,7 @@ export default function DailyFit() {
 					position: 'absolute',
 					width: 250,
 					height: 26,
-					left: 35,
+					textAlign: 'center',
 					top: 144,
 					fontFamily: 'Apple SD Gothic Neo',
 					fontStyle: 'normal',
