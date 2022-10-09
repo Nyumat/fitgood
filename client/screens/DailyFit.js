@@ -14,28 +14,57 @@ export default function DailyFit() {
           textAlign: "center",
           top: 100,
           position: "absolute",
-          fontFamily: "Apple SD Gothic Neo",
+          fontFamily: "GillSans",
         }}
       >
         Your DailyFit
       </Text>
 
       <Center>
-        <Button style={{ position: "absolute", top: 200, width: 300 }}>
-          <Text>Click me to be notified of daily fits!</Text>
+        <Button style={{ 
+          position: "absolute",
+          top: 200, 
+          width: 300,
+          height:40,
+          lineheight: 34, 
+          backgroundColor: "#D3D3D3",
+          borderradius: 69,
+          fontWeight: 500,
+          fontSize: 40,           
+          textAlign: "center",
+          color: "#000000",
+               }}>
+          <Text style={{fontFamily: "GillSans-SemiBold",}}>Click me to be notified of daily fits!</Text>
+        </Button>
+        <Button style={{ 
+          position: "absolute",
+          top: 250, 
+          width: 300,
+          height:40,
+          lineheight: 34, 
+          backgroundColor: "#D3D3D3",
+          borderradius: 69,
+          fontWeight: 500,
+          fontSize: 40,           
+          textAlign: "center",
+          color: "#000000",
+               }}>
+          <Text style={{fontFamily: "GillSans-SemiBold",}}>Add to Favorites</Text>
         </Button>
       </Center>
 
-      <View
-        style={{
-          backgroundColor: "#DBDBDB",
+        <View
+          style={{
 
-          position: "absolute",
-          top: 180,
-          width: 350,
-          height: 350,
-          borderRadius: 20,
-          shadowColor: "#000",
+            position: "absolute",
+
+            top: 180,
+            width: 350,
+            height: 350,
+            borderRadius: 20,
+          
+            backgroundColor: "#E2ECD0",
+            shadowColor: "#000",
         }}
       >
         {/* Four squarees */}
