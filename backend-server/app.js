@@ -93,7 +93,7 @@ app.post('/api/login/', passport.authenticate('local'), (req, res) =>{
 // upload a clothing item, body should look like the following:
 /* {
       image: {image object}
-      item_name: {string}
+      item_name: {string} <== removed for now 
       category: {int within range of category numbers [default: 0-3]}
     }*/
 app.post('/api/upload_item/', check_authenticated, upload.single("image"), (req, res) => {
@@ -101,7 +101,9 @@ app.post('/api/upload_item/', check_authenticated, upload.single("image"), (req,
     req.body.category = parseInt(req.body.category)
   }
 
-  account_manager.create_item(req.user, req.body.item_name, req.upload_filename, req.body.category)
+  let item_name = req.user + Date.now()  // this line removes necessity for filename
+
+  account_manager.create_item(req.user, item_name, req.upload_filename, req.body.category)
   res.send().status(200)
 });
 

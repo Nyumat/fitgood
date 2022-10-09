@@ -7,8 +7,10 @@ const LocalStrategy = require('passport-local').Strategy
 
 function initialize(passport, get_user_by_username){
     const authenticate_user = async (username, password, done) =>{
-        const user = get_user_by_username(username);
-        if (!user){
+        let user
+        try{
+            user = get_user_by_username(username)
+        } catch (e) {
             return done(null, false, {message: "incorrect username or password"}); //incorrect username
         }
 
